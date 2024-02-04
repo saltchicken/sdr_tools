@@ -19,6 +19,8 @@ def generate_fm_packet(streamer, binary_string, freq, freq_deviation, duration):
     return transmission_signal
 
 def cos_wave_generator(sample_rate, frequency, samples):
+    i = 0
     while True:
         t = (np.arange(samples) + i * samples) / sample_rate
         yield np.exp(1j * 2 * np.pi * frequency * t).astype(np.complex64)
+        i += 1
